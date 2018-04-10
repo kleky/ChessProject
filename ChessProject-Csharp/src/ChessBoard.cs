@@ -20,7 +20,10 @@ namespace SolarWinds.MSP.Chess
 
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
-            throw new NotImplementedException("Need to implement ChessBoard.IsLegalBoardPosition()");
+            if (xCoordinate < 0 || xCoordinate > MaxBoardHeight) return false;
+            if (yCoordinate < 0 || yCoordinate > MaxBoardWidth) return false;
+
+            return true;
         }
 
     }
