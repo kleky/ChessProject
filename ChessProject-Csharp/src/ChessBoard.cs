@@ -13,9 +13,17 @@ namespace SolarWinds.MSP.Chess
             pieces = new Pawn[MaxBoardWidth, MaxBoardHeight];
         }
 
+        //todo - pieceColor param redundant as already inside pawn
         public void Add(Pawn pawn, int xCoordinate, int yCoordinate, PieceColor pieceColor)
         {
-            throw new NotImplementedException("Need to implement ChessBoard.Add()");
+            if (IsLegalBoardPosition(xCoordinate, yCoordinate))
+            {
+                pieces[xCoordinate, yCoordinate] = pawn;
+                pawn.XCoordinate = xCoordinate;
+                pawn.YCoordinate = yCoordinate;
+                pawn.ChessBoard = this;
+            }
+            
         }
 
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
