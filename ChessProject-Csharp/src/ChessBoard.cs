@@ -10,10 +10,9 @@ namespace SolarWinds.MSP.Chess
 
         public ChessBoard ()
         {
-            pieces = new Pawn[MaxBoardWidth, MaxBoardHeight];
+            pieces = new Pawn[MaxBoardWidth + 1, MaxBoardHeight + 1];
         }
 
-        //todo - pieceColor param redundant as already inside pawn
         public void Add(Pawn pawn, int xCoordinate, int yCoordinate, PieceColor pieceColor)
         {
             if (IsLegalBoardPosition(xCoordinate, yCoordinate))
@@ -34,8 +33,8 @@ namespace SolarWinds.MSP.Chess
         //Are co-ords legal and is the spot vacant
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
-            if (xCoordinate < 0 || xCoordinate > MaxBoardHeight) return false;
-            if (yCoordinate < 0 || yCoordinate > MaxBoardWidth) return false;
+            if (xCoordinate < 0 || xCoordinate > MaxBoardWidth) return false;
+            if (yCoordinate < 0 || yCoordinate > MaxBoardHeight) return false;
 
             if (pieces[xCoordinate, yCoordinate] != null) return false;
 

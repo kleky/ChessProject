@@ -8,7 +8,7 @@ namespace SolarWinds.MSP.Chess
         private int xCoordinate;
         private int yCoordinate;
         private PieceColor pieceColor;
-        
+
         public ChessBoard ChessBoard
         {
             get { return chessBoard; }
@@ -20,7 +20,7 @@ namespace SolarWinds.MSP.Chess
             get { return xCoordinate; }
             set { xCoordinate = value; }
         }
-        
+
         public int YCoordinate
         {
             get { return yCoordinate; }
@@ -40,7 +40,22 @@ namespace SolarWinds.MSP.Chess
 
         public void Move(MovementType movementType, int newX, int newY)
         {
-            throw new NotImplementedException("Need to implement Pawn.Move()");
+            int moveValue = PieceColor == PieceColor.White ? 1 : -1;
+
+            switch (movementType)
+            {
+                case MovementType.Move:
+                    if (newX == xCoordinate && newY == yCoordinate + moveValue &&
+                        chessBoard.IsLegalBoardPosition(newX, newY))
+                    {
+                        xCoordinate = newX;
+                        yCoordinate = newY;
+                    }
+                    return;
+                default:
+                    throw new NotImplementedException("Pawn Move capture");
+            }
+
         }
 
         public override string ToString()
