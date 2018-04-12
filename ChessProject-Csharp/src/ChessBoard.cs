@@ -41,15 +41,10 @@ namespace SolarWinds.MSP.Chess
                 CountOfPieces(piece) < piece.MaxPieceCount)
             {
                 pieces[xCoordinate, yCoordinate] = piece;
-                piece.XCoordinate = xCoordinate;
-                piece.YCoordinate = yCoordinate;
+                piece.SetCoordinates(xCoordinate, yCoordinate);
             }
             else
-            {
-                piece.XCoordinate = -1;
-                piece.YCoordinate = -1;
-            }
-            
+                piece.SetCoordinates(-1, -1);
         }
 
         //Are co-ords legal and is the spot vacant

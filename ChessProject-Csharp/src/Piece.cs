@@ -4,9 +4,9 @@ namespace SolarWinds.MSP.Chess
 {
     public abstract class Piece
     {
-        public ChessBoard ChessBoard { get; set; }
-        public int XCoordinate { get; set; }
-        public int YCoordinate { get; set; }
+        public ChessBoard ChessBoard { get; }
+        public int XCoordinate { get; protected set; }
+        public int YCoordinate { get; protected set; }
         public PieceColor PieceColor { get; }
         
         /// <summary>
@@ -25,6 +25,12 @@ namespace SolarWinds.MSP.Chess
         public override string ToString()
         {
             return CurrentPositionAsString();
+        }
+
+        public void SetCoordinates(int xCoordinate, int yCoordinate)
+        {
+            XCoordinate = xCoordinate;
+            YCoordinate = yCoordinate;
         }
 
         protected string CurrentPositionAsString()
