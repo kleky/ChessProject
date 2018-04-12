@@ -8,10 +8,12 @@ namespace SolarWinds.MSP.Chess
         public static readonly int MaxBoardHeight = 7;
         private Piece[,] pieces;
 
-        public ChessBoard()
+        protected ChessBoard()
         {
             pieces = new Piece[MaxBoardWidth + 1, MaxBoardHeight + 1];
         }
+
+        public static ChessBoard Create() => new ChessBoard();
 
         /// <summary>
         /// Counts all the chessboard pieces of the given type 

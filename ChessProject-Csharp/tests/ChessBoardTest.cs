@@ -15,7 +15,7 @@ namespace SolarWinds.MSP.Chess
         [TestInitialize]
 		public void SetUp()
 		{
-			chessBoard = new ChessBoard();
+			chessBoard = ChessBoard.Create();
 		}
 
         [TestMethod]
@@ -82,8 +82,8 @@ namespace SolarWinds.MSP.Chess
         [TestMethod]
 		public void Avoids_Duplicate_Positioning()
 		{
-			Pawn firstPawn = new Pawn(PieceColor.Black);
-			Pawn secondPawn = new Pawn(PieceColor.Black);
+			Pawn firstPawn = Pawn.Create(PieceColor.Black, chessBoard);
+			Pawn secondPawn = Pawn.Create(PieceColor.Black, chessBoard);
 			chessBoard.Add(firstPawn, 6, 3, PieceColor.Black);
 			chessBoard.Add(secondPawn, 6, 3, PieceColor.Black);
 			Assert.AreEqual(firstPawn.XCoordinate, 6);
@@ -97,7 +97,7 @@ namespace SolarWinds.MSP.Chess
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				Pawn pawn = new Pawn(PieceColor.Black);
+				Pawn pawn = Pawn.Create(PieceColor.Black, chessBoard);
 				int row = i / ChessBoard.MaxBoardWidth;
 				chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row, PieceColor.Black);
 				if (row < 1)
