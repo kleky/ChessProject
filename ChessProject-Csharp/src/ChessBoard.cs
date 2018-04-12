@@ -6,21 +6,21 @@ namespace SolarWinds.MSP.Chess
     {
         public static readonly int MaxBoardWidth = 7;
         public static readonly int MaxBoardHeight = 7;
-        private Piece[,] pieces;
+        private Pieces pieces;
 
         public ChessBoard ()
         {
-            pieces = new Piece[MaxBoardWidth + 1, MaxBoardHeight + 1];
+            pieces = new Pieces();
         }
 
         public void Add(Piece piece, int xCoordinate, int yCoordinate, PieceColor pieceColor)
         {
             if (IsLegalBoardPosition(xCoordinate, yCoordinate))
             {
-                pieces[xCoordinate, yCoordinate] = piece;
                 piece.XCoordinate = xCoordinate;
                 piece.YCoordinate = yCoordinate;
                 piece.ChessBoard = this;
+                pieces.Add(piece, xCoordinate, yCoordinate);
             }
             else
             {
@@ -36,7 +36,7 @@ namespace SolarWinds.MSP.Chess
             if (xCoordinate < 0 || xCoordinate > MaxBoardWidth) return false;
             if (yCoordinate < 0 || yCoordinate > MaxBoardHeight) return false;
 
-            if (pieces[xCoordinate, yCoordinate] != null) return false;
+            if (pieces.Fetch(xCoordinate, yCoordinate) != null) return false;
 
             return true;
         }

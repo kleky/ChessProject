@@ -6,7 +6,10 @@ namespace SolarWinds.MSP.Chess
     {
         public Pawn(PieceColor pieceColor) : base(pieceColor)
         {
+            MaxPieceCount = ChessBoard.MaxBoardWidth;
         }
+
+        public override int MaxPieceCount { get; }
 
         public override void Move(MovementType movementType, int newX, int newY)
         {

@@ -38,7 +38,7 @@ namespace SolarWinds.MSP.Chess
 			Assert.AreEqual(pawn.YCoordinate, 3);
 		}
 
-		[TestMethod]
+	    [TestMethod]
 		public void Pawn_Move_IllegalCoordinates_Right_DoesNotMove()
 		{
 			chessBoard.Add(pawn, 6, 3, PieceColor.Black);

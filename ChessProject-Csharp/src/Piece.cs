@@ -7,8 +7,9 @@ namespace SolarWinds.MSP.Chess
         public ChessBoard ChessBoard { get; set; }
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
-        public PieceColor PieceColor { get; private set; }
-
+        public PieceColor PieceColor { get; }
+        public abstract int MaxPieceCount { get; }
+        
         protected Piece(PieceColor pieceColor)
         {
             PieceColor = pieceColor;
