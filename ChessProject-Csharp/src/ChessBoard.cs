@@ -41,7 +41,6 @@ namespace SolarWinds.MSP.Chess
                 pieces[xCoordinate, yCoordinate] = piece;
                 piece.XCoordinate = xCoordinate;
                 piece.YCoordinate = yCoordinate;
-                piece.ChessBoard = this;
             }
             else
             {

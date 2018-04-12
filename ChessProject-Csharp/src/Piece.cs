@@ -8,15 +8,16 @@ namespace SolarWinds.MSP.Chess
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
         public PieceColor PieceColor { get; }
-
+        
         /// <summary>
         /// Maximum number of pieces permitted on the chessboard
         /// </summary>
         public abstract int MaxPieceCount { get; }
 
-        protected Piece(PieceColor pieceColor)
+        protected Piece(PieceColor pieceColor, ChessBoard chessBoard)
         {
             PieceColor = pieceColor;
+            ChessBoard = chessBoard;
         }
 
         public abstract void Move(MovementType movementType, int newX, int newY);

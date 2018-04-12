@@ -20,8 +20,8 @@ namespace SolarWinds.MSP.Chess
 		public void SetUp()
 		{
 			chessBoard = new ChessBoard();
-			pawn = new Pawn(PieceColor.Black);
-			pawn2 = new Pawn(PieceColor.White);
+			pawn = new Pawn(PieceColor.Black, chessBoard);
+			pawn2 = new Pawn(PieceColor.White, chessBoard);
 		}
 
 		[TestMethod]
@@ -38,7 +38,7 @@ namespace SolarWinds.MSP.Chess
 			Assert.AreEqual(pawn.YCoordinate, 3);
 		}
 
-	    [TestMethod]
+	            [TestMethod]
 		public void Pawn_Move_IllegalCoordinates_Right_DoesNotMove()
 		{
 			chessBoard.Add(pawn, 6, 3, PieceColor.Black);
