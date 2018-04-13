@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;  
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -82,16 +83,17 @@ namespace SolarWinds.MSP.Chess
         [TestMethod]
 		public void Avoids_Duplicate_Positioning()
 		{
-			Pawn firstPawn = TestsApi.Factory.CreatePawn(PieceColor.Black, chessBoard);
-			Pawn secondPawn = TestsApi.Factory.CreatePawn(PieceColor.Black, chessBoard);
+			Pawn firstPawn = TestsApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+			Pawn secondPawn = TestsApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
 
-			chessBoard.Add(firstPawn, 6, 3, PieceColor.Black);
-			chessBoard.Add(secondPawn, 6, 3, PieceColor.Black);
+			var firstPawnOutcome =  chessBoard.Add(firstPawn, 6, 3, PieceColor.Black);
+		    var secondPawnOutcome = chessBoard.Add(secondPawn, 6, 3, PieceColor.Black);
 
+            Assert.AreEqual(firstPawnOutcome, MethodOutcome.Success);
+            Assert.AreEqual(secondPawnOutcome, MethodOutcome.Fail);
 			Assert.AreEqual(firstPawn.XCoordinate, 6);
             Assert.AreEqual(firstPawn.YCoordinate, 3);
-            Assert.AreEqual(secondPawn.XCoordinate, -1);
-            Assert.AreEqual(secondPawn.YCoordinate, -1);
+            
 		}
 
         [TestMethod]
@@ -99,20 +101,23 @@ namespace SolarWinds.MSP.Chess
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				Pawn pawn = Pawn.Create(PieceColor.Black, chessBoard);
-				int row = i / ChessBoard.MaxBoardWidth;
-				chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row, PieceColor.Black);
-				if (row < 1)
+				Pawn pawn = TestsApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+                int row = i / ChessBoard.MaxBoardWidth;
+
+                var outcome = chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row, PieceColor.Black);
+
+                if (row < 1)
 				{
+                    Assert.AreEqual(outcome, MethodOutcome.Success);
 				    Assert.AreEqual(pawn.XCoordinate, (i % ChessBoard.MaxBoardWidth));
 				    Assert.AreEqual(pawn.YCoordinate, (6 + row));
 				}
 				else
-				{
-				    Assert.AreEqual(pawn.XCoordinate, -1);
-				    Assert.AreEqual(pawn.YCoordinate, -1);
-				}
-			}
-		}
+                    Assert.AreEqual(outcome, MethodOutcome.Fail);
+
+            }
+        }
+
+
 	}
 }

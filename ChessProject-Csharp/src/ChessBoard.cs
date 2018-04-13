@@ -1,4 +1,5 @@
 ﻿using System;
+using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -17,6 +18,7 @@ namespace SolarWinds.MSP.Chess
 
         /// <summary>
         /// Counts all the chessboard pieces of the given type 
+        /// todo - simpify this logic
         /// </summary>
         /// <param name="piece">Piece type to count</param>
         /// <returns></returns>
@@ -35,19 +37,24 @@ namespace SolarWinds.MSP.Chess
             return count;
         }
 
-        public void Add(Piece piece, int xCoordinate, int yCoordinate, PieceColor pieceColor)
+        public MethodOutcome Add(Piece piece, int xCoordinate, int yCoordinate, PieceColor pieceColor)
         {
             if (IsLegalBoardPosition(xCoordinate, yCoordinate) &&
                 CountOfPieces(piece) < piece.MaxPieceCount)
             {
                 pieces[xCoordinate, yCoordinate] = piece;
                 piece.SetCoordinates(xCoordinate, yCoordinate);
+                return MethodOutcome.Success;
             }
-            else
-                piece.SetCoordinates(-1, -1);
+            return MethodOutcome.Fail;
         }
 
-        //Are co-ords legal and is the spot vacant
+        /// <summary>
+        /// Do the provided co-ordinates exist and is the position vacant
+        /// </summary>
+        /// <param name="xCoordinate">x column</param>
+        /// <param name="yCoordinate">y row</param>
+        /// <returns></returns>
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
             if (xCoordinate < 0 || xCoordinate > MaxBoardWidth) return false;
@@ -57,6 +64,8 @@ namespace SolarWinds.MSP.Chess
 
             return true;
         }
+
+        
 
     }
 }

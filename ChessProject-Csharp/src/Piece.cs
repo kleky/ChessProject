@@ -1,4 +1,5 @@
 ﻿using System;
+using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -20,7 +21,7 @@ namespace SolarWinds.MSP.Chess
             ChessBoard = chessBoard;
         }
 
-        public abstract void Move(MovementType movementType, int newX, int newY);
+        public abstract MoveOutcome Move(MovementType movementType, int newX, int newY);
 
         public override string ToString()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -9,12 +10,10 @@ namespace SolarWinds.MSP.Chess
         public static Pawn Create(PieceColor pieceColor, ChessBoard chessBoard) =>
             new Pawn(pieceColor, chessBoard);
 
-
-
-
+        
         public override int MaxPieceCount { get; } = ChessBoard.MaxBoardWidth;
 
-        public override void Move(MovementType movementType, int newX, int newY)
+        public override MoveOutcome Move(MovementType movementType, int newX, int newY)
         {
             int moveValue = PieceColor == PieceColor.White ? 1 : -1;
 
@@ -26,11 +25,14 @@ namespace SolarWinds.MSP.Chess
                     {
                         XCoordinate = newX;
                         YCoordinate = newY;
+                        return MoveOutcome.Moved;
                     }
-                    return;
+                    return MoveOutcome.Illegal;
                 default:
                     throw new NotImplementedException("Pawn Move capture");
             }
         }        
     }
+
+    
 }

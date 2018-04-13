@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -15,7 +16,7 @@ namespace SolarWinds.MSP.Chess
                 ChessBoard.Create();
             
             public static Pawn CreatePawn(PieceColor pieceColor, ChessBoard chessBoard) =>
-                Pawn.Create(pieceColor, chessBoard);
+                (Pawn)PieceFactory.CreatePiece(pieceColor, chessBoard, PieceType.Pawn);
 
         }
     }
