@@ -14,9 +14,9 @@ namespace SolarWinds.MSP.Chess
 
         [TestInitialize]
 		public void SetUp()
-		{
-			chessBoard = ChessBoard.Create();
-		}
+        {
+            chessBoard = TestsApi.Factory.CreateChessBoard();
+        }
 
         [TestMethod]
 		public void Has_MaxBoardWidth_of_7()
@@ -82,10 +82,12 @@ namespace SolarWinds.MSP.Chess
         [TestMethod]
 		public void Avoids_Duplicate_Positioning()
 		{
-			Pawn firstPawn = Pawn.Create(PieceColor.Black, chessBoard);
-			Pawn secondPawn = Pawn.Create(PieceColor.Black, chessBoard);
+			Pawn firstPawn = TestsApi.Factory.CreatePawn(PieceColor.Black, chessBoard);
+			Pawn secondPawn = TestsApi.Factory.CreatePawn(PieceColor.Black, chessBoard);
+
 			chessBoard.Add(firstPawn, 6, 3, PieceColor.Black);
 			chessBoard.Add(secondPawn, 6, 3, PieceColor.Black);
+
 			Assert.AreEqual(firstPawn.XCoordinate, 6);
             Assert.AreEqual(firstPawn.YCoordinate, 3);
             Assert.AreEqual(secondPawn.XCoordinate, -1);

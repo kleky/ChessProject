@@ -19,15 +19,16 @@ namespace SolarWinds.MSP.Chess
 		[TestInitialize]
 		public void SetUp()
 		{
-			chessBoard = ChessBoard.Create();
-			pawn = Pawn.Create(PieceColor.Black, chessBoard);
-			pawn2 = Pawn.Create(PieceColor.White, chessBoard);
+		    chessBoard = TestsApi.Factory.CreateChessBoard();
+			pawn = TestsApi.Factory.CreatePawn(PieceColor.Black, chessBoard);
+			pawn2 = TestsApi.Factory.CreatePawn(PieceColor.White, chessBoard);
+			
 		}
 
 		[TestMethod]
 		public void ChessBoard_Add_Sets_XCoordinate()
 		{
-			chessBoard.Add(pawn, 6, 3, PieceColor.Black);
+            chessBoard.Add(pawn, 6, 3, PieceColor.Black);
 			Assert.AreEqual(pawn.XCoordinate, 6);
 		}
 
