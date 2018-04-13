@@ -7,8 +7,7 @@ using SolarWinds.MSP.Chess.Enums;
 
 namespace SolarWinds.MSP.Chess
 {
-    public static partial class TestsApi
-    {
+    public static partial class ChessApi {
         public static partial class Factory
         {
             

@@ -54,7 +54,7 @@
     <Compile Include="PawnTest.cs" />
     <Compile Include="PieceFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestsApi\Factory.cs" />
+    <Compile Include="ChessApi\Factory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\src\Chess.csproj">

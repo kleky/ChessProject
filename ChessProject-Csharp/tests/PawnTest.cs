@@ -20,9 +20,9 @@ namespace SolarWinds.MSP.Chess
 		[TestInitialize]
 		public void SetUp()
 		{
-		    chessBoard = TestsApi.Factory.CreateChessBoard();
-			pawn = TestsApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
-			pawn2 = TestsApi.Factory.CreatePawn(pieceColor: PieceColor.White, chessBoard: chessBoard);
+		    chessBoard = ChessApi.Factory.CreateChessBoard();
+			pawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+			pawn2 = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.White, chessBoard: chessBoard);
 			
 		}
 

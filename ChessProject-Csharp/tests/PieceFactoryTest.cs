@@ -15,7 +15,7 @@ namespace SolarWinds.MSP.Chess
         [TestMethod]
         public void CreatePiece_Will_Create_A_Pawn()
         {
-            var chessBoard = TestsApi.Factory.CreateChessBoard();
+            var chessBoard = ChessApi.Factory.CreateChessBoard();
             var piece = PieceFactory.CreatePiece(PieceColor.White, chessBoard, PieceType.Pawn);
 
             Assert.IsInstanceOfType(piece, typeof(Pawn));
