@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ChessBoardTest.cs" />
     <Compile Include="PawnTest.cs" />
+    <Compile Include="PieceFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsApi\Factory.cs" />
   </ItemGroup>
