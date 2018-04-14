@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SolarWinds.MSP.Chess.Enums;
+using SolarWinds.MSP.Chess.ExtensionMethods;
 
 namespace SolarWinds.MSP.Chess
 {
@@ -27,6 +28,13 @@ namespace SolarWinds.MSP.Chess
         /// Maximum number of pieces permitted on the chessboard
         /// </summary>
         public abstract int MaxPieceCount { get; }
+
+        /// <summary>
+        /// The count of this piece type on the ChessBoard has reached
+        /// the limit of MaxPieceCount
+        /// </summary>
+        public bool BoardCountLimitReached =>
+            ChessBoard.Pieces.CountPieces(PieceType) >= MaxPieceCount;
 
         /// <summary>
         /// Positionas available for legal next move

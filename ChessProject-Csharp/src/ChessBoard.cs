@@ -20,31 +20,11 @@ namespace SolarWinds.MSP.Chess
 
         public static ChessBoard Create() => new ChessBoard();
 
-        /// <summary>
-        /// Counts all the chessboard pieces of the given type 
-        /// todo - simpify this logic
-        /// </summary>
-        /// <param name="piece">Piece type to count</param>
-        /// <returns></returns>
-        public int CountOfPieces(Piece piece)
-        {
-            int count = 0;
-            foreach (BoardPosition position in Pieces)
-            {
-                if (!position.IsEmpty() &&
-                    position.Occupier.PieceType == piece.PieceType)
-                {
-                    count++;
-                }
-            }
-            return count;
-        }
-
         public MethodOutcome Add(Piece piece, int xCoordinate, int yCoordinate)
         {
             if (Pieces[xCoordinate,yCoordinate].IsEmpty() &&
                 IsLegalBoardPosition(xCoordinate, yCoordinate) &&
-                CountOfPieces(piece) < piece.MaxPieceCount)
+                !piece.BoardCountLimitReached)
             {
                 Pieces[xCoordinate, yCoordinate].Occupier = piece;
                 piece.SetCoordinates(xCoordinate, yCoordinate);
