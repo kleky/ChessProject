@@ -32,7 +32,7 @@ namespace SolarWinds.MSP.Chess
             foreach (BoardPosition position in Pieces)
             {
                 if (!position.IsEmpty() &&
-                    position.Occupier.GetType() == piece.GetType()) //todo  refer to enum
+                    position.Occupier.PieceType == piece.PieceType)
                 {
                     count++;
                 }

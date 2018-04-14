@@ -14,7 +14,7 @@ namespace SolarWinds.MSP.Chess
             switch (pieceType)
             {
                 case PieceType.Pawn:
-                    return Pawn.Create(pieceColor, chessBoard);
+                    return Pawn.Create(pieceColor, pieceType, chessBoard);
             }
 
             throw new ArgumentException("Wrong type provided to CreatePiece");

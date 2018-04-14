@@ -6,9 +6,10 @@ namespace SolarWinds.MSP.Chess
 {
     public abstract class Piece
     {
-        protected Piece(PieceColor pieceColor, ChessBoard chessBoard)
+        protected Piece(PieceColor pieceColor, PieceType pieceType, ChessBoard chessBoard)
         {
             PieceColor = pieceColor;
+            PieceType = pieceType;
             ChessBoard = chessBoard;
         }
 
@@ -19,6 +20,8 @@ namespace SolarWinds.MSP.Chess
         public int YCoordinate { get; protected set; }
 
         public PieceColor PieceColor { get; }
+
+        public PieceType PieceType { get; }
 
         /// <summary>
         /// Maximum number of pieces permitted on the chessboard

@@ -6,10 +6,11 @@ namespace SolarWinds.MSP.Chess
 {
     public class Pawn : Piece
     {
-        protected Pawn(PieceColor pieceColor, ChessBoard chessBoard) : base(pieceColor, chessBoard){}
+        protected Pawn(PieceColor pieceColor, PieceType pieceType, ChessBoard chessBoard) : 
+            base(pieceColor, pieceType, chessBoard){}
 
-        public static Pawn Create(PieceColor pieceColor, ChessBoard chessBoard) =>
-            new Pawn(pieceColor, chessBoard);
+        public static Pawn Create(PieceColor pieceColor, PieceType pieceType, ChessBoard chessBoard) =>
+            new Pawn(pieceColor, pieceType, chessBoard);
 
         public override int MaxPieceCount { get; } = ChessBoard.MaxBoardWidth;
 
