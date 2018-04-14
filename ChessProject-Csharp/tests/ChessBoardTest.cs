@@ -86,8 +86,8 @@ namespace SolarWinds.MSP.Chess
 			Pawn firstPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
 			Pawn secondPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
 
-			var firstPawnOutcome =  chessBoard.Add(firstPawn, 6, 3, PieceColor.Black);
-		    var secondPawnOutcome = chessBoard.Add(secondPawn, 6, 3, PieceColor.Black);
+			var firstPawnOutcome =  chessBoard.Add(firstPawn, 6, 3);
+		    var secondPawnOutcome = chessBoard.Add(secondPawn, 6, 3);
 
             Assert.AreEqual(firstPawnOutcome, MethodOutcome.Success);
             Assert.AreEqual(secondPawnOutcome, MethodOutcome.Fail);
@@ -104,7 +104,7 @@ namespace SolarWinds.MSP.Chess
 				Pawn pawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
                 int row = i / ChessBoard.MaxBoardWidth;
 
-                var outcome = chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row, PieceColor.Black);
+                var outcome = chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row);
 
                 if (row < 1)
 				{
