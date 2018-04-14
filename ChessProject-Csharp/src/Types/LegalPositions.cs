@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using SolarWinds.MSP.Chess.Pieces;
 
-namespace SolarWinds.MSP.Chess
+namespace SolarWinds.MSP.Chess.Types
 {
     /// <summary>
     /// Container type for a list of position coordinates

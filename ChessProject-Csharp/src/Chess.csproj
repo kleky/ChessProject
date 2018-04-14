@@ -43,19 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardPosition.cs" />
+    <Compile Include="Types\BoardPosition.cs" />
     <Compile Include="ChessBoard.cs" />
     <Compile Include="Enums\MoveOutcome.cs" />
     <Compile Include="Enums\MethodOutcome.cs" />
     <Compile Include="Enums\MovementType.cs" />
     <Compile Include="ExtensionMethods\ArrayExtensions.cs" />
-    <Compile Include="LegalPositions.cs" />
-    <Compile Include="Piece.cs" />
-    <Compile Include="Pawn.cs" />
+    <Compile Include="Types\LegalPositions.cs" />
+    <Compile Include="Pieces\Piece.cs" />
+    <Compile Include="Pieces\Pawn.cs" />
     <Compile Include="Enums\PieceColor.cs" />
     <Compile Include="PieceFactory.cs" />
     <Compile Include="Enums\PieceType.cs" />
-    <Compile Include="Position.cs" />
+    <Compile Include="Types\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SolarWinds.MSP.Chess.Enums;
+using SolarWinds.MSP.Chess.Types;
 
 namespace SolarWinds.MSP.Chess.ExtensionMethods
 {

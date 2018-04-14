@@ -1,5 +1,7 @@
 ﻿using System;
 using SolarWinds.MSP.Chess.Enums;
+using SolarWinds.MSP.Chess.Pieces;
+using SolarWinds.MSP.Chess.Types;
 
 namespace SolarWinds.MSP.Chess
 {

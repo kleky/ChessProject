@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SolarWinds.MSP.Chess.Enums;
+using SolarWinds.MSP.Chess.Pieces;
 
 namespace SolarWinds.MSP.Chess
 {

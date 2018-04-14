@@ -1,4 +1,6 @@
-﻿namespace SolarWinds.MSP.Chess
+﻿using SolarWinds.MSP.Chess.Pieces;
+
+namespace SolarWinds.MSP.Chess.Types
 {
     public class BoardPosition 
     {

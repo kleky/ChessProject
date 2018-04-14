@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using SolarWinds.MSP.Chess.Enums;
 using SolarWinds.MSP.Chess.ExtensionMethods;
+using SolarWinds.MSP.Chess.Types;
 
-namespace SolarWinds.MSP.Chess
+namespace SolarWinds.MSP.Chess.Pieces
 {
     public abstract class Piece
     {
