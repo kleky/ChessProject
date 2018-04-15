@@ -5,24 +5,19 @@ using SolarWinds.MSP.Chess.Types;
 
 namespace SolarWinds.MSP.Chess
 {
-    public class ChessBoard
+    public class ChessBoard : IChessBoard
     {
         public static readonly int MaxBoardWidth = 8;
         public static readonly int MaxBoardHeight = 8;
-        public BoardPosition[,] Pieces;
+        public BoardPosition[,] Pieces { get; } = ChessFactory.CreateBoardPositions(MaxBoardWidth, MaxBoardHeight);
 
         protected ChessBoard()
         {
-            Pieces = new BoardPosition[MaxBoardWidth, MaxBoardHeight];
-
-            for (int x = 0; x <= MaxBoardWidth - 1; x++)
-                for (int y = 0; y <= MaxBoardHeight -1; y++)
-                    Pieces[x, y] = new BoardPosition();
         }
 
         public static ChessBoard Create() => new ChessBoard();
 
-        public MethodOutcome Add(Piece piece, int xCoordinate, int yCoordinate)
+        public MethodOutcome Add(IPiece piece, int xCoordinate, int yCoordinate)
         {
             if (Pieces[xCoordinate,yCoordinate].IsEmpty() &&
                 IsLegalBoardPosition(xCoordinate, yCoordinate) &&

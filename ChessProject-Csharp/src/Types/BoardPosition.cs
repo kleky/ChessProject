@@ -2,12 +2,12 @@
 
 namespace SolarWinds.MSP.Chess.Types
 {
-    public class BoardPosition 
+    public class BoardPosition
     {
         /// <summary>
         /// Piece occupying this position
         /// </summary>
-        public Piece Occupier { get; set; }
+        public IPiece Occupier { get; set; }
 
         /// <summary>
         /// Position is vacant/no piece present

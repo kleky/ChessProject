@@ -14,12 +14,12 @@ namespace SolarWinds.MSP.Chess
     [TestClass]
 	public class PawnTest
 	{
-		private ChessBoard chessBoard;
-		private Pawn pawnBlack;
-		private Pawn pawnBlack2;
-        private Pawn pawnWhite;
+	    private IChessBoard chessBoard;
+	    private IPiece pawnBlack;
+	    private IPiece pawnBlack2;
+	    private IPiece pawnWhite;
 
-		[TestInitialize]
+        [TestInitialize]
 		public void SetUp()
 		{
 		    chessBoard = ChessApi.Factory.CreateChessBoard();

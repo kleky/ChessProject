@@ -12,11 +12,11 @@ namespace SolarWinds.MSP.Chess
         public static partial class Factory
         {
             
-            public static ChessBoard CreateChessBoard() =>
+            public static IChessBoard CreateChessBoard() =>
                 ChessBoard.Create();
             
-            public static Pawn CreatePawn(PieceColor pieceColor, ChessBoard chessBoard) =>
-                (Pawn)PieceFactory.CreatePiece(pieceColor, chessBoard, PieceType.Pawn);
+            public static IPiece CreatePawn(PieceColor pieceColor, IChessBoard chessBoard) =>
+                ChessFactory.CreatePiece(pieceColor, chessBoard, PieceType.Pawn);
 
         }
     }

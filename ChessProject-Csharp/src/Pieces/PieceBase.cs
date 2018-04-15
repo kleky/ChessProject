@@ -5,12 +5,12 @@ using SolarWinds.MSP.Chess.Types;
 
 namespace SolarWinds.MSP.Chess.Pieces
 {
-    public abstract class Piece
+    public class PieceBase : IPiece
     {
-        protected Piece(
+        protected PieceBase(
             PieceColor pieceColor, 
             PieceType pieceType, 
-            ChessBoard chessBoard,
+            IChessBoard chessBoard,
             int maxPieceCount)
         {
             PieceColor = pieceColor;
@@ -19,7 +19,7 @@ namespace SolarWinds.MSP.Chess.Pieces
             MaxPieceCount = maxPieceCount;
         }
 
-        public ChessBoard ChessBoard { get; }
+        public IChessBoard ChessBoard { get; }
 
         public int XCoordinate { get; protected set; }
 
@@ -45,7 +45,10 @@ namespace SolarWinds.MSP.Chess.Pieces
         /// Positionas available for legal next move
         /// </summary>
         /// <returns></returns>
-        public abstract LegalPositions LegalPositions();
+        public virtual LegalPositions LegalPositions()
+        {
+            throw new NotImplementedException("LegalPositions not implemented");
+        }
 
         /// <summary>
         /// 

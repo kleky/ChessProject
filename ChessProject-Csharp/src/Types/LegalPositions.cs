@@ -9,24 +9,24 @@ namespace SolarWinds.MSP.Chess.Types
     /// </summary>
     public class LegalPositions
     {
-        protected LegalPositions(ChessBoard chessBoard)
+        protected LegalPositions(IChessBoard chessBoard)
         {
             this.chessBoard = chessBoard;
-            positionsList = new List<Position>();
+            positionsList = new List<LegalPosition>();
         }
 
-        protected ChessBoard chessBoard { get; }
-        protected List<Position> positionsList { get; }
+        protected IChessBoard chessBoard { get; }
+        protected List<LegalPosition> positionsList { get; }
 
-        public static LegalPositions Create(ChessBoard chessBoard) => new LegalPositions(chessBoard);
+        public static LegalPositions Create(IChessBoard chessBoard) => new LegalPositions(chessBoard);
 
-        public LegalPositions Add(int xCoordinate, int yCoordinate, Piece piece)
+        public LegalPositions Add(int xCoordinate, int yCoordinate, IPiece piece)
         {
             if (chessBoard.IsLegalBoardPosition(xCoordinate, yCoordinate) &&
                 (chessBoard.Pieces[xCoordinate, yCoordinate].IsEmpty() ||
                 chessBoard.Pieces[xCoordinate, yCoordinate].Occupier.PieceColor != piece.PieceColor))
             {
-                positionsList.Add(Position.New(xCoordinate, yCoordinate));
+                positionsList.Add(LegalPosition.New(xCoordinate, yCoordinate));
             }
 
             return this;

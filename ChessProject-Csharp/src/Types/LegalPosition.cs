@@ -1,8 +1,8 @@
 ﻿namespace SolarWinds.MSP.Chess.Types
 {
-    public class Position
+    public class LegalPosition
     {
-        protected Position (int xCoordinates, int yCoordinates)
+        protected LegalPosition (int xCoordinates, int yCoordinates)
         {
             this.xCoordinates = xCoordinates;
             this.yCoordinates = yCoordinates;
@@ -10,7 +10,7 @@
         public int xCoordinates { get; }
         public int yCoordinates { get; }
 
-        public static Position New(int xCoordinates, int yCoordinates) =>
-            new Position(xCoordinates, yCoordinates);
+        public static LegalPosition New(int xCoordinates, int yCoordinates) =>
+            new LegalPosition(xCoordinates, yCoordinates);
     }
 }

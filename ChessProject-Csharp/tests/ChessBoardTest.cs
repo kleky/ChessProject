@@ -12,7 +12,7 @@ namespace SolarWinds.MSP.Chess
     [TestClass]
 	public class ChessBoardTest
 	{
-		private ChessBoard chessBoard;
+		private IChessBoard chessBoard;
 
         [TestInitialize]
 		public void SetUp()
@@ -84,8 +84,8 @@ namespace SolarWinds.MSP.Chess
         [TestMethod]
 		public void Avoids_Duplicate_Positioning()
 		{
-			Pawn firstPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
-			Pawn secondPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+			IPiece firstPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+			IPiece secondPawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
 
 			var firstPawnOutcome =  chessBoard.Add(firstPawn, 6, 3);
 		    var secondPawnOutcome = chessBoard.Add(secondPawn, 6, 3);
@@ -102,7 +102,7 @@ namespace SolarWinds.MSP.Chess
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				Pawn pawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
+				IPiece pawn = ChessApi.Factory.CreatePawn(pieceColor: PieceColor.Black, chessBoard: chessBoard);
                 int row = i / ChessBoard.MaxBoardWidth;
 
                 var outcome = chessBoard.Add(pawn, i % ChessBoard.MaxBoardWidth, 6 + row);

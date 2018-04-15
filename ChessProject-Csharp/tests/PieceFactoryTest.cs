@@ -17,11 +17,12 @@ namespace SolarWinds.MSP.Chess
         public void CreatePiece_Will_Create_A_Pawn()
         {
             var chessBoard = ChessApi.Factory.CreateChessBoard();
-            var piece = PieceFactory.CreatePiece(PieceColor.White, chessBoard, PieceType.Pawn);
+            var piece = ChessFactory.CreatePiece(PieceColor.White, chessBoard, PieceType.Pawn);
 
             Assert.IsInstanceOfType(piece, typeof(Pawn));
             Assert.AreEqual(piece.PieceColor, PieceColor.White);
             Assert.AreEqual(piece.ChessBoard, chessBoard);
+            Assert.AreEqual(piece.PieceType, PieceType.Pawn);
         }
 
     }
