@@ -7,16 +7,16 @@ namespace SolarWinds.MSP.Chess
 {
     public class ChessBoard
     {
-        public static readonly int MaxBoardWidth = 7;
-        public static readonly int MaxBoardHeight = 7;
+        public static readonly int MaxBoardWidth = 8;
+        public static readonly int MaxBoardHeight = 8;
         public BoardPosition[,] Pieces;
 
         protected ChessBoard()
         {
-            Pieces = new BoardPosition[MaxBoardWidth + 1, MaxBoardHeight + 1];
+            Pieces = new BoardPosition[MaxBoardWidth, MaxBoardHeight];
 
-            for (int x = 0; x <= MaxBoardWidth; x++)
-                for (int y = 0; y <= MaxBoardHeight; y++)
+            for (int x = 0; x <= MaxBoardWidth - 1; x++)
+                for (int y = 0; y <= MaxBoardHeight -1; y++)
                     Pieces[x, y] = new BoardPosition();
         }
 
@@ -43,13 +43,11 @@ namespace SolarWinds.MSP.Chess
         /// <returns></returns>
         public bool IsLegalBoardPosition(int xCoordinate, int yCoordinate)
         {
-            if (xCoordinate < 0 || xCoordinate > MaxBoardWidth) return false;
-            if (yCoordinate < 0 || yCoordinate > MaxBoardHeight) return false;
+            if (xCoordinate < 0 || xCoordinate >= MaxBoardWidth) return false;
+            if (yCoordinate < 0 || yCoordinate >= MaxBoardHeight) return false;
 
             return true;
         }
-
-
 
     }
 }

@@ -10,7 +10,10 @@ namespace SolarWinds.MSP.Chess
 {
     public class PieceFactory
     {
-        public static Piece CreatePiece(PieceColor pieceColor, ChessBoard chessBoard, PieceType pieceType)
+        public static Piece CreatePiece(
+            PieceColor pieceColor, 
+            ChessBoard chessBoard, 
+            PieceType pieceType)
         {
             switch (pieceType)
             {
