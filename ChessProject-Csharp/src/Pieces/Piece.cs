@@ -7,11 +7,16 @@ namespace SolarWinds.MSP.Chess.Pieces
 {
     public abstract class Piece
     {
-        protected Piece(PieceColor pieceColor, PieceType pieceType, ChessBoard chessBoard)
+        protected Piece(
+            PieceColor pieceColor, 
+            PieceType pieceType, 
+            ChessBoard chessBoard,
+            int maxPieceCount)
         {
             PieceColor = pieceColor;
             PieceType = pieceType;
             ChessBoard = chessBoard;
+            MaxPieceCount = maxPieceCount;
         }
 
         public ChessBoard ChessBoard { get; }
@@ -27,7 +32,7 @@ namespace SolarWinds.MSP.Chess.Pieces
         /// <summary>
         /// Maximum number of pieces permitted on the chessboard
         /// </summary>
-        public abstract int MaxPieceCount { get; }
+        public int MaxPieceCount { get; }
 
         /// <summary>
         /// The count of this piece type on the ChessBoard has reached
