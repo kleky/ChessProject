@@ -19,7 +19,7 @@ namespace SolarWinds.MSP.Chess
 
         public MethodOutcome Add(IPiece piece, int xCoordinate, int yCoordinate)
         {
-            if (Pieces[xCoordinate,yCoordinate].IsEmpty() &&
+            if (Pieces[xCoordinate, yCoordinate].IsEmpty() &&
                 IsLegalBoardPosition(xCoordinate, yCoordinate) &&
                 !piece.BoardCountLimitReached)
             {
@@ -28,6 +28,29 @@ namespace SolarWinds.MSP.Chess
                 return MethodOutcome.Success;
             }
             return MethodOutcome.Fail;
+        }
+
+        public MoveOutcome Move(MovementType movementType, int xCoordFrom, int yCoordFrom, int xCoordTo, int yCoordTo)
+        {
+            if (!IsLegalBoardPosition(xCoordFrom, yCoordFrom) ||
+                !IsLegalBoardPosition(xCoordTo, yCoordTo) ||
+                Pieces[xCoordFrom, yCoordFrom].IsEmpty())
+                return MoveOutcome.Illegal;
+
+            var piece = Pieces[xCoordFrom, yCoordFrom].Occupier;
+
+            switch (movementType)
+            {
+                case MovementType.Move:
+                    if (piece.LegalPositions().Contains(xCoordTo, yCoordTo))
+                    {
+                        piece.SetCoordinates(xCoordTo, yCoordTo);
+                        return MoveOutcome.Moved;
+                    }
+                    return MoveOutcome.Illegal;
+                default:
+                    throw new NotImplementedException("Pawn Move capture");
+            }
         }
 
         /// <summary>

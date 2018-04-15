@@ -50,30 +50,6 @@ namespace SolarWinds.MSP.Chess.Pieces
             throw new NotImplementedException("LegalPositions not implemented");
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="movementType"></param>
-        /// <param name="newX"></param>
-        /// <param name="newY"></param>
-        /// <returns></returns>
-        public virtual  MoveOutcome Move(MovementType movementType, int newX, int newY)
-        {
-            switch (movementType)
-            {
-                case MovementType.Move:
-                    if (LegalPositions().Contains(newX, newY))
-                    {
-                        XCoordinate = newX;
-                        YCoordinate = newY;
-                        return MoveOutcome.Moved;
-                    }
-                    return MoveOutcome.Illegal;
-                default:
-                    throw new NotImplementedException("Pawn Move capture");
-            }
-        }
-
         public override string ToString()
         {
             return CurrentPositionAsString();

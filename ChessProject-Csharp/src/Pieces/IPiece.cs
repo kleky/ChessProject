@@ -28,15 +28,6 @@ namespace SolarWinds.MSP.Chess.Pieces
         /// <returns></returns>
         LegalPositions LegalPositions();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="movementType"></param>
-        /// <param name="newX"></param>
-        /// <param name="newY"></param>
-        /// <returns></returns>
-        MoveOutcome Move(MovementType movementType, int newX, int newY);
-
         void SetCoordinates(int xCoordinate, int yCoordinate);
     }
 }

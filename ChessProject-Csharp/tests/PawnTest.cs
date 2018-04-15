@@ -8,9 +8,6 @@ using SolarWinds.MSP.Chess.Pieces;
 
 namespace SolarWinds.MSP.Chess
 {
-    //test that a black pawn can only move down the board
-    //test that a white pawn can only move up the board
-
     [TestClass]
 	public class PawnTest
 	{
@@ -51,7 +48,8 @@ namespace SolarWinds.MSP.Chess
 		public void Pawn_Move_IllegalCoordinates_Right_DoesNotMove()
 		{
 		    chessBoard.Add(pawnBlack, 6, 3);
-		    var outcome = pawnBlack.Move(MovementType.Move, 7, 3);
+		    var outcome = chessBoard.Move(MovementType.Move, 6, 3, 7, 3);
+		    
 
             Assert.AreEqual(outcome, MoveOutcome.Illegal);
             Assert.AreEqual(pawnBlack.XCoordinate, 6);
@@ -62,8 +60,8 @@ namespace SolarWinds.MSP.Chess
 		public void Pawn_Move_IllegalCoordinates_Left_DoesNotMove()
 		{
 			chessBoard.Add(pawnBlack, 6, 3);
-		    var outcome = pawnBlack.Move(MovementType.Move, 4, 3);
-
+		    var outcome = chessBoard.Move(MovementType.Move, 6, 3, 4, 3);
+		    
             Assert.AreEqual(outcome, MoveOutcome.Illegal);
             Assert.AreEqual(pawnBlack.XCoordinate, 6);
             Assert.AreEqual(pawnBlack.YCoordinate, 3);
@@ -73,8 +71,8 @@ namespace SolarWinds.MSP.Chess
 		public void Pawn_Move_LegalCoordinates_Forward_UpdatesCoordinates()
 		{
 			chessBoard.Add(pawnBlack, 6, 3);
-		    var outcome = pawnBlack.Move(MovementType.Move, 6, 2);
-
+		    var outcome = chessBoard.Move(MovementType.Move, 6, 3, 6, 2);
+		    
             Assert.AreEqual(outcome, MoveOutcome.Moved);
 			Assert.AreEqual(pawnBlack.XCoordinate, 6);
             Assert.AreEqual(pawnBlack.YCoordinate, 2);
@@ -85,8 +83,8 @@ namespace SolarWinds.MSP.Chess
 	    {
 	        chessBoard.Add(pawnBlack, 6, 3);
 	        chessBoard.Add(pawnBlack2, 6, 2);
-	        var outcome = pawnBlack.Move(MovementType.Move, 6, 2);
-
+		    var outcome = chessBoard.Move(MovementType.Move, 6, 3, 6, 2);
+	        
             Assert.AreEqual(outcome, MoveOutcome.Illegal);
 	        Assert.AreEqual(pawnBlack.XCoordinate, 6);
             Assert.AreEqual(pawnBlack.YCoordinate, 3);
@@ -102,8 +100,8 @@ namespace SolarWinds.MSP.Chess
 	        Assert.IsTrue(pawnBlack.LegalPositions().Contains(6, 2));
         }
 
-        [TestMethod]
-	    public void Pawn_LegalPositions_Only_One_Move_Forward()
+	    [TestMethod]
+	    public void Pawn_LegalPositions_Black_Only_One_Move_Down()
 	    {
 	        chessBoard.Add(pawnBlack, 0, 6);
 
@@ -111,12 +109,21 @@ namespace SolarWinds.MSP.Chess
 	        Assert.IsTrue(pawnBlack.LegalPositions().Contains(0, 5));
 	    }
 
-        [TestMethod]
+	    [TestMethod]
+	    public void Pawn_LegalPositions_White_Only_One_Move_Up()
+	    {
+	        chessBoard.Add(pawnWhite, 5, 1);
+
+	        Assert.IsTrue(pawnWhite.LegalPositions().Count == 1);
+	        Assert.IsTrue(pawnWhite.LegalPositions().Contains(5, 2));
+	    }
+
+	    [TestMethod]
 	    public void Pawn_LegalPositions_End_Of_Board_With_No_Moves()
 	    {
 	        chessBoard.Add(pawnBlack, 4, 0);
 
 	        Assert.IsTrue(pawnBlack.LegalPositions().Empty());
 	    }
-    }
+	}
 }

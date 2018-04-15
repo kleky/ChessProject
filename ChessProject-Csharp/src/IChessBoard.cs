@@ -10,6 +10,7 @@ namespace SolarWinds.MSP.Chess
 
         MethodOutcome Add(IPiece piece, int xCoordinate, int yCoordinate);
 
+        MoveOutcome Move(MovementType movementType, int xCoordFrom, int yCoordFrom, int xCoordTo, int yCoordTo);
         /// <summary>
         /// Do the provided co-ordinates exist
         /// </summary>
