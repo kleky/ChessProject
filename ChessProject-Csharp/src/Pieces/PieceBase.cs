@@ -5,7 +5,7 @@ using SolarWinds.MSP.Chess.Types;
 
 namespace SolarWinds.MSP.Chess.Pieces
 {
-    public class PieceBase : IPiece
+    public abstract class PieceBase : IPiece
     {
         protected PieceBase(
             PieceColor pieceColor, 
@@ -45,10 +45,7 @@ namespace SolarWinds.MSP.Chess.Pieces
         /// Positionas available for legal next move
         /// </summary>
         /// <returns></returns>
-        public virtual LegalPositions LegalPositions()
-        {
-            throw new NotImplementedException("LegalPositions not implemented");
-        }
+        public abstract LegalPositions LegalPositions();
 
         public override string ToString()
         {
