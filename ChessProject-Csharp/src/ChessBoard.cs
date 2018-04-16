@@ -9,13 +9,14 @@ namespace SolarWinds.MSP.Chess
     {
         public static readonly int MaxBoardWidth = 8;
         public static readonly int MaxBoardHeight = 8;
-        public BoardPosition[,] Pieces { get; } = ChessFactory.CreateBoardPositions(MaxBoardWidth, MaxBoardHeight);
+        public BoardPosition[,] Pieces { get; }
 
-        protected ChessBoard()
+        protected ChessBoard(BoardPosition[,] pieces)
         {
+            Pieces = pieces;
         }
 
-        public static ChessBoard Create() => new ChessBoard();
+        public static ChessBoard Create(BoardPosition[,] pieces) => new ChessBoard(pieces);
 
         public MethodOutcome Add(IPiece piece, int xCoordinate, int yCoordinate)
         {

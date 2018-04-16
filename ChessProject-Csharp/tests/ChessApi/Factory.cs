@@ -13,7 +13,7 @@ namespace SolarWinds.MSP.Chess
         {
             
             public static IChessBoard CreateChessBoard() =>
-                ChessBoard.Create();
+                ChessFactory.CreateChessBoard();
             
             public static IPiece CreatePawn(PieceColor pieceColor, IChessBoard chessBoard) =>
                 ChessFactory.CreatePiece(pieceColor, chessBoard, PieceType.Pawn);

@@ -30,7 +30,8 @@ namespace SolarWinds.MSP.Chess
 
         public static IChessBoard CreateChessBoard()
         {
-            return ChessBoard.Create();
+            return ChessBoard.Create(
+                CreateBoardPositions(ChessBoard.MaxBoardWidth, ChessBoard.MaxBoardHeight));
         }
 
         public static BoardPosition[,] CreateBoardPositions(int maxWidth, int maxHeight)
